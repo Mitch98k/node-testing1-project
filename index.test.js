@@ -8,7 +8,11 @@ describe('[Exercise 1] trimProperties', () => {
     const actual = utils.trimProperties(input)
     expect(actual).toEqual(expected)
   })
-  test.todo('[2] returns a copy, leaving the original object intact')
+  test.todo('[2] returns a copy, leaving the original object intact', () => {
+    const input = { foo: '  foo', bar: 'bar  ', baz: ' baz ' }
+    const actual = utils.trimProperties(input)
+    expect(actual).not.toBe(input)
+  })
 })
 
 describe('[Exercise 2] trimPropertiesMutation', () => {
@@ -17,7 +21,12 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
 })
 
 describe('[Exercise 3] findLargestInteger', () => {
-  test.todo('[5] returns the largest number in an array of objects { integer: 2 }')
+  test('[5] returns the largest number in an array of objects { integer: 2 }', () => {
+    const input = [{integer: 4}, {integer: 2}, {integer: 7}]
+    const actual = utils.findLargestInteger(input)
+    
+    expect(actual).toEqual(7)
+  })
 })
 
 describe('[Exercise 4] Counter', () => {
@@ -25,9 +34,21 @@ describe('[Exercise 4] Counter', () => {
   beforeEach(() => {
     counter = new utils.Counter(3) // each test must start with a fresh couter
   })
-  test.todo('[6] the FIRST CALL of counter.countDown returns the initial count')
-  test.todo('[7] the SECOND CALL of counter.countDown returns the initial count minus one')
-  test.todo('[8] the count eventually reaches zero but does not go below zero')
+  test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {
+    const actual = counter.countDown()
+    expect(actual).toBe(3)
+  })
+  test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {
+    const actual = counter.countDown()
+    expect(actual).toBe(2)
+  })
+  test('[8] the count eventually reaches zero but does not go below zero', () => {
+    const actual = counter.countDown()
+    actual = counter.countDown()
+    expect(actual).toBe(0)
+    actual = counter.countDown()
+    expect(actual).toBe(0)
+  })
 })
 
 describe('[Exercise 5] Seasons', () => {
